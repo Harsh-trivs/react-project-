@@ -6,9 +6,8 @@ import Navbar from './components/Navbar';
 import Textfeild from './components/Textfeild';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link
+  Routes,
 } from "react-router-dom";
 import Carousel from './components/Carousel';
 
@@ -40,18 +39,13 @@ function App() {
   return (
     <>
      <Router>
-    <Navbar title="Textme" link="click me" mode={mode} OnclickColour={OnclickColour} passAlert={passAlert}/>
+    <Navbar title="Textme" link="Carousel" mode={mode} OnclickColour={OnclickColour} passAlert={passAlert}/>
     <AlertMessage alert={alert}/>
    
-    <Switch>
-          <Route path="/carousel">
-            <Carousel/>
-          </Route>
-          
-          <Route path="/">
-          <Textfeild mode={mode} passAlert={passAlert}/>
-          </Route>
-        </Switch>
+    <Routes>
+    <Route path="/" element={<Textfeild mode={mode} passAlert={passAlert} />} />
+    <Route path="/carousel" element={<Carousel />} />
+        </Routes>
         </Router>
     </>
   );
